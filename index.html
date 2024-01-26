@@ -85,3 +85,58 @@
 </body>
 
 </html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+</head>
+<body>
+    <h2>Contact Us</h2>
+    <form id="contactForm" action="https://api.web3forms.com/submit" method="post">
+        <input type="hidden" name="apikey" value="51b9fbfc-ba8d-45fc-974c-a033ffec6735">
+        <input type="hidden" name="redirect" value="/thanks.html">
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" required></textarea><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Script to handle form submission -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+            var form = event.target;
+
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Redirect to a thank-you page
+                    window.location.href = form.querySelector('input[name="redirect"]').value;
+                } else {
+                    alert('Form submission failed. Please try again later.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Form submission failed. Please try again later.');
+            });
+        });
+    </script>
+</body>
+</html>
