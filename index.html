@@ -60,58 +60,41 @@
             </div>
             <div class="display-3 fw-medium">Video <span class="text-g">editor</span></div>
         </div>
+        
+        <!-- contact us -->
+        <section>
+        <div class="container col-xl-11 col-xxl-9 px-4 py-5">
+            <div class="row align-items-center g-lg-5 py-5">
+                <div class="col-lg-5 text-center text-lg-start">
+                    <h1 class="display-3 fw-bold lh-1 text-secondary mb-3">Want talk personally?<br> Contact Me</h1>
+                    
+                </div>
+                <div class="col-md-10 mx-auto col-lg-7 ">
+                    <form class="p-4 p-md-5 border rounded-3 " id="contactForm" action="https://api.web3forms.com/submit" method="post">
+                        <input type="hidden" name="apikey" value="51b9fbfc-ba8d-45fc-974c-a033ffec6735">
+                        <input type="hidden" name="redirect" value="/thanks.html">
+                        <div class="form-floating mb-3">
+                            <input id="name" name="name" class="form-control" id="floatingInput" placeholder="">
+                            <label for="floatingInput">Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" id="email" name="email" class="form-control" id="floatingInput" placeholder="">
+                            <label for="floatingInput">Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="message" name="message" placeholder=""
+                                style="height: 100px;"></textarea>
+                            <label for="floatingMessage">Message</label>
+                        </div>
+
+                        <button class="w-100 btn btn-lg " type="submit" value="Submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
-    <section>
-
-    </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
-    <script>
-        gsap.from('#box', {
-            opacity: 0,
-            duration: 1.5,
-        })
-
-        var a = gsap.timeline();
-        a
-            .from(".display-3", {
-                duration: 2,   
-                y: -50,        
-                ease: "power2.inOut",  
-                onComplete: () => {
-                    console.log("Animation complete!");
-                }
-            })
-    </script>
-<!-- </body>
-
-</html>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-</head>
-<body> -->
-    <h2>Contact Us</h2>
-    <form id="contactForm" action="https://api.web3forms.com/submit" method="post">
-        <input type="hidden" name="apikey" value="51b9fbfc-ba8d-45fc-974c-a033ffec6735">
-        <input type="hidden" name="redirect" value="/thanks.html">
-
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br>
-        
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br>
-        
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="4" required></textarea><br>
-        
-        <input type="submit" value="Submit">
-    </form>
+</section>
+    <!-- contact us -->
 
     <!-- Script to handle form submission -->
     <script>
@@ -137,6 +120,24 @@
                 alert('Form submission failed. Please try again later.');
             });
         });
-    </script>
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+        <script>
+            gsap.from('#box', {
+                opacity: 0,
+                duration: 1.5,
+            })
+    
+            var a = gsap.timeline();
+            a
+                .from(".display-3", {
+                    duration: 2,   
+                    y: -50,        
+                    ease: "power2.inOut",  
+                    onComplete: () => {
+                        console.log("Animation complete!");
+                    }
+                })
+        </script>
 </body>
 </html>
