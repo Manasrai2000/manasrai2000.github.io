@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <title>Your Title Here</title>
+    <style>
+        * {
+            font-family: "Red Hat Display", sans-serif;
+        }
+
+        .text-g {
+            background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to left, #aaa, #ddd);
+            transition: all 0.5s ease-in-out;
+        }
+
+        ::selection {
+            color: #aaa;
+            background-color: #373737;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page intro -->
+    <section class="bg-dark">
+        <div class="container-fluid p-0">
+            <div class="position-relative overflow-hidden" style="height: 100vh;">
+
+                <!-- Color Overlay -->
+                <div
+                    style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)); z-index: 1;">
+                </div>
+                <div class="position-absolute translate-middle top-50 start-50" style="z-index: 0;">
+                    <video src="./medium.mp4" class="card-img-top" muted autoplay loop style="width: 100vw;"></video>
+                </div>
+
+                <div class="position-absolute translate-middle text-light top-50 start-50 text-center"
+                    style="z-index: 3;">
+                    <p class="display-1 fw-medium" id="box">
+                        Manas
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Page intro -->
+    <section class="bg-dark">
+        <div class="container py-5 text-secondary">
+            <div class="display-3 fw-medium">Web <span class="text-g">designer</span> Bootstrap, tailwind</div>
+            <div class="display-3 fw-medium">Web <span class="text-g">developer</span> React, Php</div>
+            <div class="display-3 fw-medium">Flutter <span class="text-g">developer</span></div>
+            <div class="display-3 fw-medium">Figma <span class="text-g">designer</span> Canva, Photoshop, Illustrator
+            </div>
+            <div class="display-3 fw-medium">Video <span class="text-g">editor</span></div>
+        </div>
+    </section>
+    <section>
+
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script>
+        gsap.from('#box', {
+            opacity: 0,
+            duration: 1.5,
+        })
+
+        var a = gsap.timeline();
+        a
+            .from(".display-3", {
+                duration: 2,   
+                y: -50,        
+                ease: "power2.inOut",  
+                onComplete: () => {
+                    console.log("Animation complete!");
+                }
+            })
+    </script>
+</body>
+
+</html>
