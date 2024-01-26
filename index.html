@@ -60,45 +60,46 @@
             </div>
             <div class="display-3 fw-medium">Video <span class="text-g">editor</span></div>
         </div>
-        
-        <!-- contact us -->
-        <section>
+
+    </section>
+    <!-- contact us -->
+    <section class="bg-dark">
         <div class="container col-xl-11 col-xxl-9 px-4 py-5">
             <div class="row align-items-center g-lg-5 py-5">
                 <div class="col-lg-5 text-center text-lg-start">
-                    <h1 class="display-3 fw-bold lh-1 text-secondary mb-3">Want talk personally?<br> Contact Me</h1>
-                    
+                    <h1 class="display-3 fw-medium lh-1 text-secondary mb-3">Want talk personally?<br> Contact Me</h1>
+
                 </div>
                 <div class="col-md-10 mx-auto col-lg-7 ">
-                    <form class="p-4 p-md-5 border rounded-3 " id="contactForm" action="https://api.web3forms.com/submit" method="post">
+                    <form class="p-4 p-md-5 border border-secondary rounded-3 " id="contactForm"
+                        action="https://api.web3forms.com/submit" method="post">
                         <input type="hidden" name="apikey" value="51b9fbfc-ba8d-45fc-974c-a033ffec6735">
                         <input type="hidden" name="redirect" value="/thanks.html">
                         <div class="form-floating mb-3">
-                            <input id="name" name="name" class="form-control" id="floatingInput" placeholder="">
+                            <input id="name" name="name" class="form-control bg-dark-subtle" id="floatingInput"
+                                placeholder="">
                             <label for="floatingInput">Name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" id="email" name="email" class="form-control" id="floatingInput" placeholder="">
+                            <input type="email" id="email" name="email" class="form-control bg-dark-subtle"
+                                id="floatingInput" placeholder="">
                             <label for="floatingInput">Email</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" id="message" name="message" placeholder=""
+                            <textarea class="form-control bg-dark-subtle" id="message" name="message" placeholder=""
                                 style="height: 100px;"></textarea>
                             <label for="floatingMessage">Message</label>
                         </div>
-
-                        <button class="w-100 btn btn-lg " type="submit" value="Submit">Submit</button>
+                        <button class="w-100 btn btn-lg btn-secondary" type="submit" value="Submit">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-</section>
     <!-- contact us -->
-
     <!-- Script to handle form submission -->
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent the form from submitting normally
             var form = event.target;
 
@@ -106,38 +107,39 @@
                 method: 'POST',
                 body: new FormData(form),
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Redirect to a thank-you page
-                    window.location.href = form.querySelector('input[name="redirect"]').value;
-                } else {
-                    alert('Form submission failed. Please try again later.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Form submission failed. Please try again later.');
-            });
-        });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
-        <script>
-            gsap.from('#box', {
-                opacity: 0,
-                duration: 1.5,
-            })
-    
-            var a = gsap.timeline();
-            a
-                .from(".display-3", {
-                    duration: 2,   
-                    y: -50,        
-                    ease: "power2.inOut",  
-                    onComplete: () => {
-                        console.log("Animation complete!");
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Redirect to a thank-you page
+                        window.location.href = form.querySelector('input[name="redirect"]').value;
+                    } else {
+                        alert('Your feed has been successfully submitted. Please anticipate my communication within the next day. Looking forward to connecting with you shortly!');
                     }
                 })
-        </script>
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Form submission failed. Please try again later. ' + error);
+                });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script>
+        gsap.from('#box', {
+            opacity: 0,
+            duration: 1.5,
+        })
+
+        var a = gsap.timeline();
+        a
+            .from(".display-3", {
+                duration: 2,
+                y: -50,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    console.log("Animation complete!");
+                }
+            })
+    </script>
 </body>
+
 </html>
