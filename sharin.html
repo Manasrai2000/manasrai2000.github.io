@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dearest Sharin</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --soft-cream: #fffaf5;
+            --light-pink: #f9e8e8;
+            --rose: #e8b4b8;
+            --dark-text: #3a3a3a;
+            --light-grey: #e6e6e6;
+            --gold: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--soft-cream);
+            color: var(--dark-text);
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-image: linear-gradient(rgba(255, 250, 245, 0.9), rgba(255, 250, 245, 0.9)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="none" stroke="%23e8b4b8" stroke-width="0.5" d="M20,20 C40,10 60,10 80,20 C90,40 90,60 80,80 C60,90 40,90 20,80 C10,60 10,40 20,20 Z"/></svg>');
+            background-size: 180px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(232, 180, 184, 0.2);
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--rose), #d9a5b3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--light-grey);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .date {
+            font-size: 1rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        .letter-content {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .letter-content p {
+            margin-bottom: 1.8rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 3rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+        }
+
+        .heart-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2.5rem 0;
+            color: var(--rose);
+        }
+
+        .heart-divider::before,
+        .heart-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--light-grey);
+        }
+
+        .heart-divider span {
+            margin: 0 1.5rem;
+            font-size: 1.8rem;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        .memory-section {
+            margin-top: 4rem;
+        }
+
+        .memory-section h2 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #444;
+            position: relative;
+        }
+
+        .memory-section h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--rose);
+        }
+
+        .memories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .memory-card {
+            background: var(--light-pink);
+            padding: 1.8rem;
+            border-radius: 8px;
+            position: relative;
+            transition: transform 0.3s ease;
+            border-left: 3px solid var(--rose);
+        }
+
+        .memory-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .memory-card h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .memory-card p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-grey);
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Birthday Countdown Styles */
+        .birthday-section {
+            background: linear-gradient(135deg, #fff0f5, #f8f0ff);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(232, 180, 184, 0.3);
+        }
+
+        .birthday-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+        }
+
+        .birthday-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #d94a72;
+            margin-bottom: 1rem;
+        }
+
+        .birthday-subtitle {
+            font-size: 1.2rem;
+            color: #6a4c93;
+            margin-bottom: 1.5rem;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .timer-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+        }
+
+        .timer-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--rose);
+            background: white;
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.5rem;
+        }
+
+        .timer-label {
+            font-size: 0.9rem;
+            color: #6a4c93;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .birthday-message {
+            font-size: 1.1rem;
+            color: #5a5a5a;
+            margin-top: 2rem;
+            font-style: italic;
+            padding: 0 1rem;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--rose);
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e8b4b8;
+            margin-bottom: 1rem;
+        }
+
+        .profile-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .letter-content {
+                font-size: 1.1rem;
+            }
+
+            .memories {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown-timer {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .timer-unit {
+                min-width: 70px;
+            }
+
+            .timer-value {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .letter-content {
+                font-size: 1rem;
+            }
+
+            .birthday-title {
+                font-size: 1.5rem;
+            }
+
+            .birthday-subtitle {
+                font-size: 1rem;
+            }
+
+            .timer-unit {
+                min-width: 60px;
+            }
+
+            .timer-value {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="profile-header">
+            <img src="./assets/sharin-1.jpg" alt="Sharin" class="profile-image">
+            <h1 class="profile-title">My Dearest Sharin</h1>
+        </header>
+
+        <div class="letter-content">
+            <p>There's so much I feel in my heart for you, and sometimes words seem too small to hold it all. But today,
+                I want to try to share what you mean to me.</p>
+
+            <p>When I think of you, my first instinct is to wrap you in a warm hug—a hug that says everything my words
+                cannot. You bring out the brightest smiles in me, the kind that linger long after you're gone. With you,
+                I want to laugh until my cheeks hurt, cry when life feels heavy, and share every simple joy, from eating
+                our favorite meals to traveling the world hand in hand.</p>
+
+            <p>One of my most cherished memories is the time we sat by the riverbank together. The world felt still, and
+                in that quiet, I realized just how much you had become my peace. Moments like those remind me how
+                beautiful it is to share this life with you.</p>
+
+            <p>As I think about our future, my heart swells with hope. I dream of building a life with you—one where we
+                continue to care for each other as we do now, one where we stand beside each other through every high
+                and low. I want us to grow together, to celebrate every milestone, and, one day, to promise forever to
+                each other in marriage.</p>
+
+            <p>You're more than just my girlfriend, Sharin. You're my home, my dream, and my everything. Thank you for
+                being in my life and for making every moment with you unforgettable.</p>
+
+            <div class="signature">
+                Forever yours,<br>
+                Manas Rai
+            </div>
+        </div>
+
+        <div class="heart-divider">
+            <span>♥</span>
+        </div>
+
+        <!-- Birthday Countdown Section -->
+        <div class="birthday-section" id="birthday-section">
+            <h2 class="birthday-title">Counting Down to Your Special Day</h2>
+            <p class="birthday-subtitle">November 22nd - The day the world became brighter</p>
+
+            <div class="countdown-timer">
+                <div class="timer-unit">
+                    <div class="timer-value" id="days">00</div>
+                    <div class="timer-label">Days</div>
+                </div>
+                <div class="timer-unit">
+                    <div class="timer-value" id="hours">00</div>
+                    <div class="timer-label">Hours</div>
+                </div>
+                <div class="timer-unit">
+                    <div class="timer-value" id="minutes">00</div>
+                    <div class="timer-label">Minutes</div>
+                </div>
+                <div class="timer-unit">
+                    <div class="timer-value" id="seconds">00</div>
+                    <div class="timer-label">Seconds</div>
+                </div>
+            </div>
+
+            <p class="birthday-message">Every moment brings us closer to celebrating you - the most wonderful person in
+                my life.</p>
+        </div>
+
+        <div class="memory-section">
+            <h2>Memorable Moments</h2>
+            <div class="memories">
+                <div class="memory-card">
+                    <h3>Getting to Know You</h3>
+                    <p>Our first conversations, when we were just getting to know each other—every word felt like the
+                        beginning of something beautiful.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>Evening by the Riverbank</h3>
+                    <p>Sitting beside you by the river as the evening breeze whispered around us—it felt like the world
+                        had paused just for us to breathe together.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>Under the Bridge</h3>
+                    <p>That quiet time we spent under the bridge, just us—talking, laughing, and making memories in our
+                        little hidden world.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>Rainy Sooty Ride</h3>
+                    <p>Riding your Sooty in the rain, both of us drenched but smiling—it was wild, messy, and magical.
+                    </p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>Diwali Glow</h3>
+                    <p>The day you came to my home during Diwali—you looked absolutely stunning, and my whole world lit
+                        up with your presence.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>Temple Journey</h3>
+                    <p>Our trip to Mirzapur, exploring temples and sharing prayers—it was more than a journey, it was a
+                        spiritual bond we created together.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>Dussehra Saree Look</h3>
+                    <p>The way you looked in a saree during Dussehra—elegant, graceful, and completely breathtaking. I
+                        couldn’t take my eyes off you.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>When I Was Unwell</h3>
+                    <p>The day you came to see me when I was sick—you brought comfort, warmth, and so much love. It
+                        meant the world to me.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <footer>
+            Made with ♥ for Sharin
+        </footer>
+    </div>
+
+    <script>
+        // Birthday countdown function
+        function updateCountdown() {
+            // Set the birthday date (November 22nd of the current year)
+            const birthday = new Date(new Date().getFullYear(), 10, 22); // Month is 0-indexed (10 = November)
+
+            // If birthday has passed this year, set for next year
+            if (birthday < new Date()) {
+                birthday.setFullYear(birthday.getFullYear() + 1);
+            }
+
+            // Get current time
+            const now = new Date();
+
+            // Calculate time difference in milliseconds
+            const diff = birthday - now;
+
+            // Calculate days, hours, minutes, seconds
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            // Update the countdown display
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            // Add special effects when close to birthday
+            if (days <= 7) {
+                document.getElementById('birthday-section').style.background = 'linear-gradient(135deg, #fff0f5, #fce4ec)';
+                document.querySelector('.birthday-title').style.color = '#c2185b';
+            }
+        }
+
+        // Initial call
+        updateCountdown();
+
+        // Update every second
+        setInterval(updateCountdown, 1000);
+
+        // Create confetti effect
+        function createConfetti() {
+            const confettiCount = 30;
+            const section = document.getElementById('birthday-section');
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 75%)`;
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                section.appendChild(confetti);
+
+                // Remove confetti after animation completes
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        // Create confetti periodically
+        setInterval(createConfetti, 3000);
+        createConfetti(); // Initial confetti
+
+        // Special birthday message if today is the birthday
+        function checkBirthday() {
+            const today = new Date();
+            const birthday = new Date(today.getFullYear(), 10, 22);
+
+            if (today.getDate() === birthday.getDate() &&
+                today.getMonth() === birthday.getMonth()) {
+                document.querySelector('.birthday-title').textContent = 'Happy Birthday, Sharin!';
+                document.querySelector('.birthday-subtitle').textContent = 'Today is your special day!';
+                document.querySelector('.birthday-message').textContent = 'Wishing you the most wonderful day filled with love and joy. You deserve all the happiness in the world!';
+
+                // Change background
+                document.getElementById('birthday-section').style.background = 'linear-gradient(135deg, #ff9a9e, #fad0c4)';
+
+                // Create more confetti
+                setInterval(createConfetti, 500);
+            }
+        }
+
+        checkBirthday();
+    </script>
+</body>
+
+</html>

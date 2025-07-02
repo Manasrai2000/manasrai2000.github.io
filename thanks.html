@@ -3,10 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanks for Touch</title>
     <link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <script src="/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #121212; /* Dark background */
+            color: #ffffff;
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background-color: #1e1e1e; /* Dark modal background */
+            color: #ffffff;
+            animation: scaleUp 0.3s ease-in-out;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-header, .modal-footer {
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <div class="fs1">Thank you your form has been submitted</div>
+
+    <!-- Modal -->
+    <div class="modal fade show d-block" id="thankYouModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center p-4">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thank You!</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Your form has been submitted successfully.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="closeModal()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function closeModal() {
+            document.getElementById('thankYouModal').classList.remove('d-block');
+            document.getElementById('thankYouModal').classList.add('d-none');
+        }
+    </script>
+
 </body>
 </html>
