@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manas Rai - Flutter Developer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+    :root {
+      --primary-color: #0008ff;
+      --dark-color: #2f2e41;
+      --light-color: #f8f9fa;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+    
+    .navbar {
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled {
+      background-color: white !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-image {
+      border: 5px solid white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .profile-image:hover {
+      transform: scale(1.03);
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: #5a52d9;
+      border-color: #5a52d9;
+    }
+    
+    .btn-outline-primary {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      background: var(--primary-color);
+      bottom: -10px;
+      left: 0;
+      border-radius: 2px;
+    }
+    
+    .skill-card {
+      transition: all 0.3s ease;
+      border-radius: 10px;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project-card {
+      transition: all 0.3s ease;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project-image {
+      transition: all 0.5s ease;
+    }
+    
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+    
+    .testimonial-card {
+      border-left: 3px solid var(--primary-color);
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(108, 99, 255, 0.25);
+    }
+    
+    .progress {
+      height: 8px;
+      border-radius: 4px;
+    }
+    
+    .progress-bar {
+      background-color: var(--primary-color);
+    }
+    
+    .bg-light-alt {
+      background-color: #f8f9fa;
+    }
+    
+    .bg-dark-alt {
+      background-color: #2f2e41;
+    }
+    
+    .text-primary {
+      color: var(--primary-color) !important;
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar">
+  <!-- Navigation -->
+  <!-- <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Manas Rai</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> -->
+
+  <!-- Hero Section -->
+  <section id="home" class="py-5" style="padding-top: 100px !important;">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-1 order-2">
+          <h1 class="display-4 fw-bold mb-4">Hey, I'm <span class="text-primary">Manas Rai</span></h1>
+          <h2 class="h4 mb-4 text-muted">Flutter Developer</h2>
+          <p class="lead mb-4">I craft beautiful, high-performance mobile apps that users love. From concept to deployment, I bring ideas to life with clean code and intuitive design.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="./assets/ManasRai-25-7-2025.pdf" class="btn btn-primary px-4 py-2" download>
+              <i class="bi bi-download me-2"></i>Download Resume
+            </a>
+            <a href="#contact" class="btn btn-outline-primary px-4 py-2">
+              <i class="bi bi-envelope me-2"></i>Contact Me
+            </a>
+          </div>
+          <div class="d-flex gap-3 mt-4">
+            <a href="https://github.com/yourusername" target="_blank" class="text-dark">
+              <i class="bi bi-github fs-4"></i>
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-dark">
+              <i class="bi bi-linkedin fs-4"></i>
+            </a>
+            <a href="https://twitter.com/yourusername" target="_blank" class="text-dark">
+              <i class="bi bi-twitter fs-4"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-2 order-1 mb-5 mb-lg-0">
+          <div class="text-center">
+            <img src="./assets/manas.jpg" alt="Manas Rai" class="img-fluid rounded-circle profile-image floating" style="max-height: 400px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-5 bg-light-alt">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mb-5">
+          <h2 class="fw-bold section-title">About Me</h2>
+          <p class="lead text-muted">Get to know me better</p>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h3 class="fw-bold mb-4">Who am I?</h3>
+          <p class="mb-4">I'm <strong>Manas Rai</strong>, a passionate Flutter developer with a knack for creating seamless mobile experiences. I specialize in building cross-platform applications that are not only visually appealing but also performant and scalable.</p>
+          <p class="mb-4">My journey in mobile development started with a curiosity about how apps work, and it has grown into a full-fledged career where I combine my design sensibilities with technical expertise to build products that make a difference.</p>
+          <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge through blog posts and tutorials.</p>
+        </div>
+        <div class="col-lg-6 mt-5 mt-lg-0">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+              <h4 class="fw-bold mb-4">My Technical Skills</h4>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                      <img src="https://img.icons8.com/color/24/flutter.png" alt="Flutter">
+                    </div>
+                    <h6 class="mb-0">Flutter Development</h6>
+                  </div>
+                  <p class="text-muted small">Building cross-platform apps with beautiful UIs and smooth animations.</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                      <img src="https://img.icons8.com/color/24/dart.png" alt="Dart">
+                    </div>
+                    <h6 class="mb-0">Dart Programming</h6>
+                  </div>
+                  <p class="text-muted small">Writing clean, efficient code with modern Dart features.</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                      <img src="https://img.icons8.com/color/24/firebase.png" alt="Firebase">
+                    </div>
+                    <h6 class="mb-0">Firebase Integration</h6>
+                  </div>
+                  <p class="text-muted small">Implementing authentication, databases, and cloud functions.</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                      <img src="https://img.icons8.com/ios-filled/24/github.png" alt="GitHub">
+                    </div>
+                    <h6 class="mb-0">Version Control</h6>
+                  </div>
+                  <p class="text-muted small">Collaborating effectively using Git and GitHub workflows.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-5">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mb-5">
+          <h2 class="fw-bold section-title">My Skills</h2>
+          <p class="lead text-muted">Technologies I work with</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <!-- Flutter -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card skill-card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
+                <img src="https://img.icons8.com/color/48/flutter.png" alt="Flutter" width="40">
+              </div>
+              <h5 class="fw-bold mb-3">Flutter</h5>
+              <div class="progress mb-3">
+                <div class="progress-bar" role="progressbar" style="width: 95%"></div>
+              </div>
+              <p class="text-muted small mb-0">Expert in building cross-platform apps with beautiful UIs and animations.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Dart -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card skill-card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
+                <img src="https://img.icons8.com/color/48/dart.png" alt="Dart" width="40">
+              </div>
+              <h5 class="fw-bold mb-3">Dart</h5>
+              <div class="progress mb-3">
+                <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+              </div>
+              <p class="text-muted small mb-0">Proficient in writing clean, efficient Dart code with modern features.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Firebase -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card skill-card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
+                <img src="https://img.icons8.com/color/48/firebase.png" alt="Firebase" width="40">
+              </div>
+              <h5 class="fw-bold mb-3">Firebase</h5>
+              <div class="progress mb-3">
+                <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+              </div>
+              <p class="text-muted small mb-0">Experienced in authentication, Firestore, Cloud Functions, and more.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- UI/UX -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card skill-card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
+                <img src="https://img.icons8.com/color/48/figma.png" alt="Figma" width="40">
+              </div>
+              <h5 class="fw-bold mb-3">UI/UX Design</h5>
+              <div class="progress mb-3">
+                <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+              </div>
+              <p class="text-muted small mb-0">Creating intuitive interfaces and user experiences with Figma.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Additional Skills -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <h4 class="fw-bold mb-4 text-center">Other Technologies I Use</h4>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <span class="badge bg-primary bg-opacity-10 text-primary py-2 px-3">
+              <img src="https://img.icons8.com/color/24/getx.png" alt="GetX" class="me-2">GetX
+            </span>
+            <span class="badge bg-primary bg-opacity-10 text-primary py-2 px-3">
+              <img src="https://img.icons8.com/color/24/github.png" alt="GitHub" class="me-2">GitHub
+            </span>
+            <span class="badge bg-primary bg-opacity-10 text-primary py-2 px-3">
+              <img src="https://img.icons8.com/color/24/android-studio.png" alt="Android Studio" class="me-2">Android Studio
+            </span>
+            <span class="badge bg-primary bg-opacity-10 text-primary py-2 px-3">
+              <img src="https://img.icons8.com/color/24/rest-api.png" alt="REST API" class="me-2">REST APIs
+            </span>
+            <span class="badge bg-primary bg-opacity-10 text-primary py-2 px-3">
+              <img src="https://img.icons8.com/color/24/bloc-pattern.png" alt="BLoC" class="me-2">BLoC Pattern
+            </span>
+            <span class="badge bg-primary bg-opacity-10 text-primary py-2 px-3">
+              <img src="https://img.icons8.com/color/24/provider.png" alt="Provider" class="me-2">Provider
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-5 bg-light-alt">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mb-5">
+          <h2 class="fw-bold section-title">My Projects</h2>
+          <p class="lead text-muted">Some of my recent work</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <!-- Project 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card h-100 border-0 shadow-sm overflow-hidden">
+            <div class="overflow-hidden">
+              <img src="https://via.placeholder.com/600x400/6c63ff/ffffff?text=Project+1" alt="Project 1" class="card-img-top project-image">
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h5 class="fw-bold mb-0">E-Commerce App</h5>
+                <div class="d-flex gap-2">
+                  <a href="#" class="text-dark"><i class="bi bi-github"></i></a>
+                  <a href="#" class="text-dark"><i class="bi bi-box-arrow-up-right"></i></a>
+                </div>
+              </div>
+              <p class="text-muted small">A complete e-commerce solution with product listings, cart functionality, and payment integration.</p>
+              <div class="d-flex flex-wrap gap-2 mt-3">
+                <span class="badge bg-primary bg-opacity-10 text-primary">Flutter</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary">Firebase</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary">GetX</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card h-100 border-0 shadow-sm overflow-hidden">
+            <div class="overflow-hidden">
+              <img src="https://via.placeholder.com/600x400/6c63ff/ffffff?text=Project+2" alt="Project 2" class="card-img-top project-image">
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h5 class="fw-bold mb-0">Fitness Tracker</h5>
+                <div class="d-flex gap-2">
+                  <a href="#" class="text-dark"><i class="bi bi-github"></i></a>
+                  <a href="#" class="text-dark"><i class="bi bi-box-arrow-up-right"></i></a>
+                </div>
+              </div>
+              <p class="text-muted small">A workout tracking app with exercise demonstrations, progress charts, and personalized plans.</p>
+              <div class="d-flex flex-wrap gap-2 mt-3">
+                <span class="badge bg-primary bg-opacity-10 text-primary">Flutter</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary">BLoC</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary">SQLite</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card h-100 border-0 shadow-sm overflow-hidden">
+            <div class="overflow-hidden">
+              <img src="https://via.placeholder.com/600x400/6c63ff/ffffff?text=Project+3" alt="Project 3" class="card-img-top project-image">
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h5 class="fw-bold mb-0">Weather App</h5>
+                <div class="d-flex gap-2">
+                  <a href="#" class="text-dark"><i class="bi bi-github"></i></a>
+                  <a href="#" class="text-dark"><i class="bi bi-box-arrow-up-right"></i></a>
+                </div>
+              </div>
+              <p class="text-muted small">Real-time weather forecasts with beautiful animations and location-based services.</p>
+              <div class="d-flex flex-wrap gap-2 mt-3">
+                <span class="badge bg-primary bg-opacity-10 text-primary">Flutter</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary">REST API</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary">Provider</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <a href="#" class="btn btn-outline-primary px-4 py-2">
+          <i class="bi bi-github me-2"></i>View All Projects
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-5">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mb-5">
+          <h2 class="fw-bold section-title">Testimonials</h2>
+          <p class="lead text-muted">What people say about my work</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client" class="rounded-circle me-3" width="50">
+                <div>
+                  <h6 class="fw-bold mb-0">Sarah Johnson</h6>
+                  <small class="text-muted">Product Manager, TechCorp</small>
+                </div>
+              </div>
+              <p class="mb-0">"Manas delivered our e-commerce app ahead of schedule with exceptional quality. His attention to detail and problem-solving skills are remarkable."</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="rounded-circle me-3" width="50">
+                <div>
+                  <h6 class="fw-bold mb-0">Michael Chen</h6>
+                  <small class="text-muted">CEO, StartupX</small>
+                </div>
+              </div>
+              <p class="mb-0">"Working with Manas was a game-changer for our product. He not only implemented features flawlessly but also suggested improvements we hadn't considered."</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" class="rounded-circle me-3" width="50">
+                <div>
+                  <h6 class="fw-bold mb-0">Emma Rodriguez</h6>
+                  <small class="text-muted">UX Designer, CreativeMinds</small>
+                </div>
+              </div>
+              <p class="mb-0">"Manas brings designs to life exactly as envisioned. His Flutter implementations are pixel-perfect and perform beautifully across devices."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="py-5 bg-light-alt">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mb-5">
+          <h2 class="fw-bold section-title">My Blog</h2>
+          <p class="lead text-muted">Latest articles and tutorials</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="https://via.placeholder.com/600x400/6c63ff/ffffff?text=Blog+1" class="card-img-top" alt="Blog Post">
+            <div class="card-body">
+              <small class="text-muted">June 15, 2023 • 5 min read</small>
+              <h5 class="fw-bold my-2">Optimizing Flutter Performance</h5>
+              <p class="text-muted small">Learn advanced techniques to make your Flutter apps buttery smooth.</p>
+              <a href="#" class="text-primary text-decoration-none">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="https://via.placeholder.com/600x400/6c63ff/ffffff?text=Blog+2" class="card-img-top" alt="Blog Post">
+            <div class="card-body">
+              <small class="text-muted">May 28, 2023 • 8 min read</small>
+              <h5 class="fw-bold my-2">State Management in Flutter</h5>
+              <p class="text-muted small">Comparing different state management solutions for your next project.</p>
+              <a href="#" class="text-primary text-decoration-none">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="https://via.placeholder.com/600x400/6c63ff/ffffff?text=Blog+3" class="card-img-top" alt="Blog Post">
+            <div class="card-body">
+              <small class="text-muted">April 10, 2023 • 6 min read</small>
+              <h5 class="fw-bold my-2">Firebase Authentication</h5>
+              <p class="text-muted small">Implementing secure authentication flows with Firebase in Flutter.</p>
+              <a href="#" class="text-primary text-decoration-none">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <a href="#" class="btn btn-outline-primary px-4 py-2">
+          <i class="bi bi-journal-text me-2"></i>View All Articles
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mb-5">
+          <h2 class="fw-bold section-title">Get In Touch</h2>
+          <p class="lead text-muted">Have a project in mind? Let's talk!</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-5">
+              <h3 class="fw-bold mb-4">Contact Information</h3>
+              <p class="mb-4">Feel free to reach out to me for project inquiries, collaborations, or just to say hello!</p>
+              
+              <div class="d-flex align-items-start mb-4">
+                <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                  <i class="bi bi-envelope-fill text-primary"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-1">Email</h6>
+                  <a href="mailto:your.email@example.com" class="text-decoration-none">your.email@example.com</a>
+                </div>
+              </div>
+              
+              <div class="d-flex align-items-start mb-4">
+                <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                  <i class="bi bi-telephone-fill text-primary"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-1">Phone</h6>
+                  <a href="tel:+917007734039" class="text-decoration-none">+91 7007734039</a>
+                </div>
+              </div>
+              
+              <div class="d-flex align-items-start mb-4">
+                <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                  <i class="bi bi-linkedin text-primary"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-1">LinkedIn</h6>
+                  <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-decoration-none">linkedin.com/in/yourusername</a>
+                </div>
+              </div>
+              
+              <div class="d-flex align-items-start">
+                <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                  <i class="bi bi-geo-alt-fill text-primary"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-1">Location</h6>
+                  <p class="mb-0">New Delhi, India</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-5">
+              <h3 class="fw-bold mb-4">Send Me a Message</h3>
+              <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Your Name</label>
+                  <input type="text" class="form-control" id="name" placeholder="John Doe">
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" class="form-control" id="email" placeholder="john@example.com">
+                </div>
+                <div class="mb-3">
+                  <label for="subject" class="form-label">Subject</label>
+                  <input type="text" class="form-control" id="subject" placeholder="Project Inquiry">
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea class="form-control" id="message" rows="4" placeholder="Hello Manas, I'd like to discuss..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2">
+                  <i class="bi bi-send-fill me-2"></i>Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark-alt text-white">
+    <div class="container py-4">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <h5 class="fw-bold mb-3">Manas Rai</h5>
+          <p class="small mb-0">Flutter Developer creating beautiful, functional mobile experiences.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <div class="d-flex justify-content-center justify-content-md-end gap-3">
+            <a href="https://github.com/yourusername" target="_blank" class="text-white">
+              <i class="bi bi-github fs-5"></i>
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-white">
+              <i class="bi bi-linkedin fs-5"></i>
+            </a>
+            <a href="https://twitter.com/yourusername" target="_blank" class="text-white">
+              <i class="bi bi-twitter fs-5"></i>
+            </a>
+            <a href="https://medium.com/@yourusername" target="_blank" class="text-white">
+              <i class="bi bi-medium fs-5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 opacity-10">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <p class="small mb-0">&copy; 2023 Manas Rai. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <p class="small mb-0">Designed & Developed by <span class="text-primary">Manas Rai</span></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Form submission
+    const form = document.querySelector('form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Here you would typically send the form data to a server
+        alert('Thank you for your message! I will get back to you soon.');
+        form.reset();
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manas Rai - Flutter Developer | Mobile App Development</title>
+    <meta name="description"
+        content="Professional Flutter developer specializing in cross-platform mobile apps. Expert in Dart, Firebase, UI/UX design, and scalable app development.">
+    <meta name="author" content="Manas Rai">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --primary: 220 100% 60%;
+            --primary-foreground: 210 40% 98%;
+            --secondary: 210 40% 95%;
+            --secondary-foreground: 222.2 84% 4.9%;
+            --muted: 210 40% 96%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+            --accent: 210 40% 94%;
+            --accent-foreground: 222.2 84% 4.9%;
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --border: 214.3 31.8% 91.4%;
+
+            --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(220 100% 70%));
+            --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(280 100% 70%) 100%);
+            --gradient-section: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+
+            --shadow-hero: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
+            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: hsl(var(--foreground));
+            background: hsl(var(--background));
+        }
+
+        .hero-section {
+            background: var(--gradient-section);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 320px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: var(--shadow-hero);
+            border: 4px solid white;
+            position: relative;
+        }
+
+        .profile-container {
+            position: relative;
+        }
+
+        .profile-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-hero);
+            border-radius: 50%;
+            blur: 2rem;
+            opacity: 0.2;
+            transform: scale(1.1);
+            z-index: -1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-gradient-text {
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-hero {
+            background: var(--gradient-hero);
+            border: none;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+            color: white;
+        }
+
+        .btn-contact {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: hsl(var(--foreground));
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-contact:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: hsl(var(--foreground));
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-hero);
+            border-radius: 2px;
+            margin: 0 auto 3rem;
+        }
+
+        .card-custom {
+            background: hsl(var(--card));
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-card);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .tech-icon {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-bar-custom {
+            background: hsl(var(--muted));
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-hero);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        .project-card {
+            background: hsl(var(--card));
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form {
+            background: hsl(var(--card));
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .form-control:focus {
+            border-color: hsl(var(--primary));
+            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+        }
+
+        footer {
+            background: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.1);
+            color: hsl(var(--primary));
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: hsl(var(--primary));
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container col-lg-9">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-2 order-lg-1">
+                    <div class="text-center text-lg-start">
+                        <p class="text-primary fw-semibold text-uppercase small mb-2">Flutter Developer</p>
+                        <h1 class="hero-title">
+                            Hey, I'm <span class="hero-gradient-text">Manas Rai</span>
+                        </h1>
+                        <p class="lead text-muted mb-4">
+                            A passionate <strong>Flutter Developer</strong> who loves crafting sleek, responsive, and
+                            scalable apps. From UI design in Figma to production-ready code — I build end-to-end mobile
+                            experiences that users enjoy.
+                        </p>
+                        <p class="text-muted mb-4">
+                            Let's build something amazing together — whether it's your next startup idea, freelance
+                            project, or UI challenge.
+                        </p>
+
+                        <div
+                            class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start mb-4">
+                            <a href="#" class="btn-hero">
+                                <i class="bi bi-download"></i>
+                                Download Resume
+                            </a>
+                            <a href="tel:+917007734039" class="btn-contact">
+                                <i class="bi bi-telephone"></i>
+                                Let's Talk
+                            </a>
+                        </div>
+
+                        <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                            <a href="https://github.com/manas-rai" class="social-link" target="_blank">
+                                <i class="bi bi-github"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/manas-rai" class="social-link" target="_blank">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 order-1 order-lg-2 text-center mb-5 mb-lg-0">
+                    <div class="profile-container d-inline-block">
+                        <img src="./assets/manas.jpg" alt="Manas Rai - Flutter Developer" class="profile-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="section-divider"></div>
+
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <p class="lead mb-4">
+                                I'm <strong>Manas Rai</strong>, a passionate Flutter Developer who enjoys turning
+                                complex problems into elegant, scalable mobile apps. I love working with modern
+                                frameworks and tools to deliver pixel-perfect, responsive designs with robust backend
+                                logic.
+                            </p>
+                            <p class="mb-4">
+                                My journey started with designing in <strong>Figma</strong> and evolved into full-stack
+                                app development using tools like <strong>Flutter, Dart, Firebase, and GetX</strong>. I
+                                aim to keep learning and building meaningful products that impact real users.
+                            </p>
+
+                            <div class="d-flex flex-wrap gap-3 mb-4">
+                                <a href="https://github.com/manas-rai" class="btn btn-primary" target="_blank">
+                                    <i class="bi bi-github me-2"></i>GitHub Profile
+                                </a>
+                                <a href="https://medium.com/@manas-rai" class="btn btn-outline-primary" target="_blank">
+                                    <i class="bi bi-journal-text me-2"></i>Medium Blog
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="card-custom text-center">
+                                        <h3 class="text-primary fw-bold mb-2">2+</h3>
+                                        <p class="text-muted mb-0">Years Experience</p>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="card-custom text-center">
+                                        <h3 class="text-primary fw-bold mb-2">15+</h3>
+                                        <p class="text-muted mb-0">Projects Completed</p>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="card-custom text-center">
+                                        <h3 class="text-primary fw-bold mb-2">100%</h3>
+                                        <p class="text-muted mb-0">Client Satisfaction</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <p class="text-center text-muted mb-4">Here's a glimpse of the tools and technologies I use to build modern,
+                scalable apps</p>
+            <div class="section-divider"></div>
+
+            <div class="row g-4 mb-5">
+                <!-- Frontend Development -->
+                <div class="col-lg-4">
+                    <div class="card-custom h-100">
+                        <h4 class="fw-semibold mb-4 text-center">Frontend Development</h4>
+                        <div class="space-y-4">
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                                            alt="Flutter" class="tech-icon" style="width: 24px; height: 24px;">
+                                        <span class="fw-medium">Flutter</span>
+                                    </div>
+                                    <span class="small text-muted">90%</span>
+                                </div>
+                                <div class="progress-bar-custom">
+                                    <div class="progress-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg"
+                                            alt="Dart" class="tech-icon" style="width: 24px; height: 24px;">
+                                        <span class="fw-medium">Dart</span>
+                                    </div>
+                                    <span class="small text-muted">88%</span>
+                                </div>
+                                <div class="progress-bar-custom">
+                                    <div class="progress-fill" style="width: 88%"></div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span style="font-size: 24px;">🎨</span>
+                                        <span class="fw-medium">Material Design</span>
+                                    </div>
+                                    <span class="small text-muted">85%</span>
+                                </div>
+                                <div class="progress-bar-custom">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend & Tools -->
+                <div class="col-lg-4">
+                    <div class="card-custom h-100">
+                        <h4 class="fw-semibold mb-4 text-center">Backend & Tools</h4>
+                        <div class="space-y-4">
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                                            alt="Firebase" class="tech-icon" style="width: 24px; height: 24px;">
+                                        <span class="fw-medium">Firebase</span>
+                                    </div>
+                                    <span class="small text-muted">80%</span>
+                                </div>
+                                <div class="progress-bar-custom">
+                                    <div class="progress-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span style="font-size: 24px;">🔗</span>
+                                        <span class="fw-medium">REST APIs</span>
+                                    </div>
+                                    <span class="small text-muted">85%</span>
+                                </div>
+                                <div class="progress-bar-custom">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span style="font-size: 24px;">⚡</span>
+                                        <span class="fw-medium">GetX</span>
+                                    </div>
+                                    <span class="small text-muted">75%</span>
+                                </div>
+                                <div class="progress-bar-custom">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design & Development -->
+                <div class="col-lg-4">
+                    <div class="card-custom h-100">
+                        <h4 class="fw-semibold mb-4 text-center">Design & Development</h4>
+                        <div class="space-y-4">
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                                            alt="Figma" class="tech-icon" style="width: 24px; height: 24px;">
+                                        <span class="fw-medium">Figma</span>
+                                    </div>
+                                    <span class="small text-muted">82%</span>
+                                </div>
+                                <div class="progress-bar-custom">
+                                    <div class="progress-fill" style="width: 82%"></div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                                            alt="Git" class="tech-icon" style="width: 24px; height: 24px;">
+                                        <span class="fw-medium">Git & GitHub</span>
+                                    </div>
+                                    <span class="small text-muted">90%</span>
+                                </div>
+                                <div class="progress-bar-custom">
+                                    <div class="progress-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg"
+                                            alt="Android Studio" class="tech-icon" style="width: 24px; height: 24px;">
+                                        <span class="fw-medium">Android Studio</span>
+                                    </div>
+                                    <span class="small text-muted">85%</span>
+                                </div>
+                                <div class="progress-bar-custom">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Icons Showcase -->
+            <div class="card-custom">
+                <h4 class="fw-semibold text-center mb-4">Technologies in My Toolkit</h4>
+                <div class="row row-cols-4 row-cols-md-6 row-cols-lg-8 g-4 text-center">
+                    <div class="col">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                            alt="Flutter" class="tech-icon mb-2">
+                        <small class="text-muted d-block">Flutter</small>
+                    </div>
+                    <div class="col">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart"
+                            class="tech-icon mb-2">
+                        <small class="text-muted d-block">Dart</small>
+                    </div>
+                    <div class="col">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                            alt="Firebase" class="tech-icon mb-2">
+                        <small class="text-muted d-block">Firebase</small>
+                    </div>
+                    <div class="col">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                            alt="Figma" class="tech-icon mb-2">
+                        <small class="text-muted d-block">Figma</small>
+                    </div>
+                    <div class="col">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+                            class="tech-icon mb-2">
+                        <small class="text-muted d-block">Git</small>
+                    </div>
+                    <div class="col">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg"
+                            alt="Android Studio" class="tech-icon mb-2">
+                        <small class="text-muted d-block">Android Studio</small>
+                    </div>
+                    <div class="col">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                            alt="VS Code" class="tech-icon mb-2">
+                        <small class="text-muted d-block">VS Code</small>
+                    </div>
+                    <div class="col">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                            alt="GitHub" class="tech-icon mb-2">
+                        <small class="text-muted d-block">GitHub</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="text-center text-muted mb-4">Some of my recent work showcasing different skills and technologies
+            </p>
+            <div class="section-divider"></div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="p-4"
+                            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 200px;"></div>
+                        <div class="p-4">
+                            <h5 class="fw-semibold mb-3">E-Commerce Mobile App</h5>
+                            <p class="text-muted mb-3">A full-featured shopping app with cart management, payment
+                                integration, and user authentication.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">Flutter</span>
+                                <span class="badge bg-primary">Firebase</span>
+                                <span class="badge bg-primary">GetX</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="#" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-github me-1"></i>Code
+                                </a>
+                                <a href="#" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-eye me-1"></i>Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="p-4"
+                            style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); height: 200px;"></div>
+                        <div class="p-4">
+                            <h5 class="fw-semibold mb-3">Task Management App</h5>
+                            <p class="text-muted mb-3">Productivity app with real-time sync, offline support, and
+                                beautiful animations.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">Flutter</span>
+                                <span class="badge bg-primary">SQLite</span>
+                                <span class="badge bg-primary">Provider</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="#" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-github me-1"></i>Code
+                                </a>
+                                <a href="#" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-eye me-1"></i>Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="p-4"
+                            style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); height: 200px;"></div>
+                        <div class="p-4">
+                            <h5 class="fw-semibold mb-3">Weather Forecast App</h5>
+                            <p class="text-muted mb-3">Clean weather app with location services, beautiful UI, and
+                                weather animations.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">Flutter</span>
+                                <span class="badge bg-primary">REST API</span>
+                                <span class="badge bg-primary">Animations</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="#" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-github me-1"></i>Code
+                                </a>
+                                <a href="#" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-eye me-1"></i>Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Let's Work Together</h2>
+            <p class="text-center text-muted mb-4">Have a project in mind? Let's discuss how I can help bring your ideas
+                to life</p>
+            <div class="section-divider"></div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="contact-form">
+                                <h4 class="fw-semibold mb-4">Send a Message</h4>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="subject" class="form-label">Subject</label>
+                                        <input type="text" class="form-control" id="subject" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        <i class="bi bi-send me-2"></i>Send Message
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="contact-form">
+                                <h4 class="fw-semibold mb-4">Get in Touch</h4>
+                                <div class="space-y-4">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="social-link">
+                                            <i class="bi bi-envelope"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-semibold">Email</div>
+                                            <div class="text-muted">manas.rai.dev@gmail.com</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="social-link">
+                                            <i class="bi bi-telephone"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-semibold">Phone</div>
+                                            <div class="text-muted">+91 7007734039</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="social-link">
+                                            <i class="bi bi-geo-alt"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-semibold">Location</div>
+                                            <div class="text-muted">India</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-3 mb-4">
+                                        <div class="social-link"
+                                            style="background: rgba(34, 197, 94, 0.1); color: #22c55e;">
+                                            <i class="bi bi-circle-fill" style="font-size: 8px;"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-semibold text-success">Available for projects</div>
+                                            <div class="text-muted">Open to new opportunities</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-3">
+                                        <div class="d-flex gap-3">
+                                            <a href="https://github.com/manas-rai" class="social-link" target="_blank">
+                                                <i class="bi bi-github"></i>
+                                            </a>
+                                            <a href="https://linkedin.com/in/manas-rai" class="social-link"
+                                                target="_blank">
+                                                <i class="bi bi-linkedin"></i>
+                                            </a>
+                                            <a href="https://twitter.com/manas_rai_dev" class="social-link"
+                                                target="_blank">
+                                                <i class="bi bi-twitter"></i>
+                                            </a>
+                                            <a href="mailto:manas.rai.dev@gmail.com" class="social-link"
+                                                target="_blank">
+                                                <i class="bi bi-envelope"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">Manas Rai</h5>
+                    <p class="text-muted small mb-3">
+                        Passionate Flutter Developer crafting beautiful, scalable mobile applications.
+                        Let's build something amazing together.
+                    </p>
+                    <div class="d-flex gap-2">
+                        <a href="https://github.com/manas-rai" class="social-link" target="_blank">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/manas-rai" class="social-link" target="_blank">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/manas_rai_dev" class="social-link" target="_blank">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="mailto:manas.rai.dev@gmail.com" class="social-link" target="_blank">
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <h6 class="fw-semibold mb-3">Quick Links</h6>
+                    <nav class="d-flex flex-column gap-2">
+                        <a href="#hero" class="text-muted text-decoration-none small">Home</a>
+                        <a href="#about" class="text-muted text-decoration-none small">About</a>
+                        <a href="#skills" class="text-muted text-decoration-none small">Skills</a>
+                        <a href="#projects" class="text-muted text-decoration-none small">Projects</a>
+                        <a href="#contact" class="text-muted text-decoration-none small">Contact</a>
+                    </nav>
+                </div>
+
+                <div class="col-md-4">
+                    <h6 class="fw-semibold mb-3">Let's Connect</h6>
+                    <div class="small text-muted">
+                        <p class="mb-2">📧 manas.rai.dev@gmail.com</p>
+                        <p class="mb-2">📱 +91 7007734039</p>
+                        <p class="mb-2">📍 India</p>
+                        <p class="text-success fw-medium mb-0">🟢 Available for projects</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4 text-muted">
+
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center gap-2 small text-muted">
+                        <span>© 2025 Designed & Developed with</span>
+                        <i class="bi bi-heart-fill text-danger"></i>
+                        <span>by Manas Rai</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex align-items-center justify-content-md-end gap-3 small text-muted">
+                        <span>Built with Flutter & React</span>
+                        <div class="d-flex gap-2">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                                alt="Flutter" style="width: 16px; height: 16px;">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                alt="React" style="width: 16px; height: 16px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Smooth scrolling for anchor links -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate progress bars when they come into view
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressFills = entry.target.querySelectorAll('.progress-fill');
+                    progressFills.forEach(fill => {
+                        const width = fill.style.width;
+                        fill.style.width = '0%';
+                        setTimeout(() => {
+                            fill.style.width = width;
+                        }, 200);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe skills section
+        const skillsSection = document.querySelector('#skills');
+        if (skillsSection) {
+            progressObserver.observe(skillsSection);
+        }
+
+        // Form submission
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Message sent! I\'ll get back to you soon.');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+
+</html>
