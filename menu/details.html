@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Premium Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Manrope:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <title>Product Details</title>
+
+    <style>
+        body {
+            background: #FAFAF5;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: "Playfair Display", serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <nav
+        class="w-full bg-white border-b border-[#E5E5E5] py-3 px-4 sticky top-0 z-50 flex justify-between items-center">
+        <button onclick="goBack()" class="text-lg font-semibold px-3 py-1 hover:bg-[#F2F2F2] text-[#3E2723]">
+            Back
+        </button>
+
+        <button id="langToggle" class="px-4 py-1 border border-[#E5E5E5] hover:bg-[#F2F2F2] rounded-lg transition text-[#3E2723]">
+            हिंदी
+        </button>
+    </nav>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="max-w-3xl mx-auto bg-white border border-[#E5E5E5] overflow-hidden shadow-sm">
+
+        <!-- TOP IMAGE -->
+        <div class="w-full h-64 md:h-80 overflow-hidden">
+            <img id="prodImage" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- CONTENT -->
+        <div class="p-6">
+
+            <!-- TITLE + PRICE -->
+            <div class="flex justify-between items-center">
+                <h1 id="prodName" class="text-3xl font-semibold text-[#3E2723]"></h1>
+                <p id="prodPrice" class="text-2xl font-bold w-18" style="color:#D35400"></p>
+            </div>
+
+            <!-- DESCRIPTION -->
+            <p id="prodDesc" class="text-[#5A4A42] mt-4 leading-relaxed text-[15px]"></p>
+
+            <!-- INGREDIENTS -->
+            <h3 class="text-2xl mt-8 mb-3 text-[#3E2723]">Ingredients</h3>
+            <ul id="prodIngredients" class="space-y-2 text-[#4E342E]"></ul>
+
+            <!-- TASTE PROFILE -->
+            <h3 class="text-2xl mt-8 mb-3 text-[#3E2723]">Taste Profile</h3>
+            <div id="prodTaste" class="flex flex-wrap gap-2"></div>
+
+            <!-- BENEFITS -->
+            <h3 class="text-2xl mt-8 mb-3 text-[#3E2723]">Benefits</h3>
+            <ul id="prodBenefits" class="space-y-2 text-[#4E342E]"></ul>
+
+            <div class="h-32"></div> <!-- spacing for bottom button -->
+        </div>
+    </div>
+
+    <!-- ⭐ FIXED PAY BUTTON BAR -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-[#E5E5E5] p-4 shadow-xl">
+        <button id="payBtn"
+            class="w-full bg-[#D35400] hover:bg-[#B94A00] text-white font-semibold py-4 text-lg rounded-xl transition">
+            Pay with UPI
+        </button>
+    </div>
+
+    <script src="./data/lang.js"></script>
+    <script src="./js/details.js"></script>
+
+</body>
+
+</html>
